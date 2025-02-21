@@ -1,1 +1,1 @@
-__all__ = ['linear_search']
+__all__ = ["info", "linear_search"]

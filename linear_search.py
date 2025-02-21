@@ -2,8 +2,17 @@ import sys
 import argparse
 
 
-def linear_search(array, search_el):
-    for i, el in enumerate(array):
+def linear_search(iterable: list | dict | str, search_el: object) -> int | None:
+    """
+    :param iterable: where you wanna find the value
+    :param type: list
+    :param search_value: what you wanna find
+    :param type: object
+    :return: Index or None
+    :return type: int | None
+    """
+    
+    for i, el in enumerate(iterable):
         if el == search_el:
             return i
 
