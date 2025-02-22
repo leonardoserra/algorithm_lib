@@ -1,34 +1,38 @@
 import sys
 import argparse
 
-def linear_search(iterable: list | dict | str, search_el: object, is_ordered=False) -> int | None:
+
+def linear_search(
+    array: list | dict | str, search_el: object, is_ordered=False
+) -> int | None:
     """
-    :param iterable: where you wanna find the value
+    :param array: where you wanna find the value
     :param type: list
     :param search_value: what you wanna find
     :param type: object
-    :param is_ordered: if the iterable is ordered set it to true
+    :param is_ordered: if the array is ordered set it to true
     :param type: bool
     :return: Index or None
     :return type: int | None
     """
     are_numbers = True
 
-    for e in iterable:
-        if not isinstance(e, int|float):
+    for e in array:
+        try:
+            float(e)
+        except Exception as error:
+            print(error)
             are_numbers = False
 
     if is_ordered and are_numbers:
-
-        for i, el in enumerate(iterable):
+        for i, el in enumerate(array):
             if el == search_el:
                 return i
             elif el > search_el:
                 break
-    
-    else:
 
-        for i, el in enumerate(iterable):
+    else:
+        for i, el in enumerate(array):
             if el == search_el:
                 return i
 
@@ -43,7 +47,9 @@ def cli():
 
     parser.add_argument("-a", "--array")
     parser.add_argument("-sv", "--search-value")
-    parser.add_argument("--is-ordered", action='store_true', required=False, default=False)
+    parser.add_argument(
+        "--is-ordered", action="store_true", required=False, default=False
+    )
 
     args = parser.parse_args()
 
@@ -63,7 +69,7 @@ def main(args):
         print(i)
 
     else:
-        print("insert iterable and search value")
+        print("insert array and search value")
 
     return 0
 
