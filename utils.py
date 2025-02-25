@@ -4,9 +4,14 @@
 """
 
 def are_numbers(array):
-    result = True
+    """
+    Check if all elements in array are numbers  
 
-    # check if all elements in array are numbers
+    :param array: list of elements
+    """
+    
+    result = True
+    
     for e in array:
         try:
             float(e)
