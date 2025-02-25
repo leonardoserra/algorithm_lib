@@ -1,30 +1,25 @@
 import sys
 import argparse
+import utils
 
 
-def linear_search(
-    array: list | dict | str, search_el: object, is_ordered=False
-) -> int | None:
+def linear_search(array: list | str, search_el: str, is_ordered=False) -> int | None:
     """
+    Implementation of the linear search algorithm.  
+    It is possible to tell that if is an ordered array, to improve search speed.
+
     :param array: where you wanna find the value
     :param type: list
     :param search_value: what you wanna find
     :param type: object
     :param is_ordered: if the array is ordered set it to true
     :param type: bool
+
     :return: Index or None
     :return type: int | None
     """
-    are_numbers = True
 
-    for e in array:
-        try:
-            float(e)
-        except Exception as error:
-            print(error)
-            are_numbers = False
-
-    if is_ordered and are_numbers:
+    if is_ordered and utils.are_numbers(array):
         for i, el in enumerate(array):
             if el == search_el:
                 return i
@@ -70,6 +65,7 @@ def main(args):
 
     else:
         print("insert array and search value")
+        return 1
 
     return 0
 
